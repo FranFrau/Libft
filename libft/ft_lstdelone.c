@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffrau <ffrau@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 11:08:30 by ffrau             #+#    #+#             */
-/*   Updated: 2022/01/17 13:00:07 by ffrau            ###   ########.fr       */
+/*   Created: 2022/01/20 10:57:05 by ffrau             #+#    #+#             */
+/*   Updated: 2022/01/20 10:57:06 by ffrau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (!lst)
+	if (!lst || !del)
 		return ;
-	del(lst);
+	del(lst->content);
+	free(lst);
 }

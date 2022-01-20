@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffrau <ffrau@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 14:41:07 by tterribi          #+#    #+#             */
-/*   Updated: 2022/01/17 18:38:38 by ffrau            ###   ########.fr       */
+/*   Created: 2022/01/20 10:57:19 by ffrau             #+#    #+#             */
+/*   Updated: 2022/01/20 10:57:20 by ffrau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,27 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new;
-	t_list	*list;
+	t_list	*temp_new;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	list = NULL;
-	while (lst)
+	new = malloc(sizeof(t_list));
+	temp_new = new;
+	while (lst != 0 && lst->content != 0)
 	{
-		new = ft_lstnew(f(lst -> content));
-		if (!new)
+		new->content = malloc(sizeof(lst->content));
+		if (new->content == 0)
+			return (0);
+		new->content = ((*f)(lst->content));
+		new->next = malloc(sizeof(t_list));
+		if (new->next == 0)
 		{
-			ft_lstclear(&list, del);
-			return (NULL);
+			ft_lstclear(&new, del);
+			return (0);
 		}
-		ft_lstadd_back(&list, new);
-		lst = lst -> next;
+		lst = lst->next;
+		if (lst != 0)
+			new = new->next;
 	}
-	return (list);
+	free(new->next);
+	new->next = 0;
+	return (temp_new);
 }

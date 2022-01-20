@@ -3,74 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tterribi <tterribi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ffrau <ffrau@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 10:45:07 by ffrau             #+#    #+#             */
-/*   Updated: 2022/01/17 18:52:02 by tterribi         ###   ########.fr       */
+/*   Created: 2022/01/20 10:56:46 by ffrau             #+#    #+#             */
+/*   Updated: 2022/01/20 10:56:47 by ffrau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	oversize(int nb, int lengh, char *str)
+int	lenght(int nb, int base)
 {
-	str[lengh--] = '8';
-	return (nb /= 10);
-}
+	int	count;
 
-void	translate(int i, int nb, char *str)
-{
-	while (nb > 0)
-	{
-		str[i] = (nb % 10) + '0';
-		nb = nb / 10;
-		i--;
-	}
-}
-
-int	length(long nb)
-{
-	int	len;
-
-	len = 0;
-	if (nb < 0)
-	{
-		nb = nb * -1;
-		len++;
-	}
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		len++;
-	}
-	return (len);
+	count = 0;
+	if (nb <= 0)
+		++count;
+	while (nb && ++count)
+		nb /= base;
+	return (count);
 }
 
 char	*ft_itoa(int nb)
 {
-	char	*str;
-	int		i;
+	int			len;
+	char		*str;
+	const char	*digits = "0123456789";
 
-	i = length(nb);
-	str = (char *) malloc(i + 1);
+	len = lenght(nb, 10);
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
-		return (NULL);
-	str[i--] = '\0';
+		return (0);
+	str[len] = 0;
 	if (nb == 0)
-	{
 		str[0] = '0';
-		return (str);
-	}
 	if (nb < 0)
-	{
 		str[0] = '-';
-		if (nb == INT_MIN)
-		{
-			nb = oversize(nb, i, str);
-			i--;
-		}
-		nb *= -1;
+	while (nb)
+	{
+		if (nb > 0)
+			str[--len] = digits[nb % 10];
+		else
+			str[--len] = digits[nb % 10 * -1];
+		nb /= 10;
 	}
-	translate(i, nb, str);
 	return (str);
 }

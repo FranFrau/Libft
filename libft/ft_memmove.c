@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffrau <ffrau@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/27 11:03:56 by ffrau             #+#    #+#             */
-/*   Updated: 2022/01/14 13:30:27 by ffrau            ###   ########.fr       */
+/*   Created: 2022/01/20 10:57:43 by ffrau             #+#    #+#             */
+/*   Updated: 2022/01/20 10:57:44 by ffrau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	*ft_memmove(void *str1, const void *str2, size_t n)
 {

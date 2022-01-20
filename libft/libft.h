@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffrau <ffrau@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 16:50:32 by ffrau             #+#    #+#             */
-/*   Updated: 2022/01/18 10:46:53 by ffrau            ###   ########.fr       */
+/*   Created: 2022/01/20 11:15:08 by ffrau             #+#    #+#             */
+/*   Updated: 2022/01/20 11:15:09 by ffrau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <stdbool.h>
-# include <stdio.h>
 # include <unistd.h>
 # undef	INT_MIN
 # undef	INT_MAX

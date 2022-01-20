@@ -5,32 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffrau <ffrau@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 08:29:41 by ffrau             #+#    #+#             */
-/*   Updated: 2022/01/14 16:57:34 by ffrau            ###   ########.fr       */
+/*   Created: 2022/01/20 11:14:38 by ffrau             #+#    #+#             */
+/*   Updated: 2022/01/20 11:14:39 by ffrau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	char_compare(char c1, char c2)
-{
-	if ((unsigned char)c1 != (unsigned char)c2)
-		return ((unsigned char)c1 - (unsigned char)c2);
-	return (0);
-}
-
 int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
-	unsigned int	i;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
 
-	i = 0;
-	while (s1[i] && s2[i] && i < n)
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	if (!n)
+		return (0);
+	while (*ptr1 && *ptr2 && *ptr1 == *ptr2 && n > 0)
 	{
-		if (char_compare(s1[i], s2[i]))
-			return (s1[i] - s2[i]);
-		i++;
+		ptr1++;
+		ptr2++;
+		n--;
 	}
-	if (i < n)
-		return (char_compare(s1[i], s2[i]));
+	if (n > 0)
+		return (*ptr1 - *ptr2);
 	return (0);
 }

@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffrau <ffrau@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 12:02:11 by ffrau             #+#    #+#             */
-/*   Updated: 2022/01/18 13:24:18 by ffrau            ###   ########.fr       */
+/*   Created: 2022/01/20 10:59:03 by ffrau             #+#    #+#             */
+/*   Updated: 2022/01/20 10:59:04 by ffrau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffrau <ffrau@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 11:37:54 by ffrau             #+#    #+#             */
-/*   Updated: 2022/01/17 18:32:50 by ffrau            ###   ########.fr       */
+/*   Created: 2022/01/20 11:14:55 by ffrau             #+#    #+#             */
+/*   Updated: 2022/01/20 11:14:56 by ffrau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
+	if ((int) start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if ((int)len > ft_strlen(s))
+		len = ft_strlen(s);
 	str = (char *) malloc(sizeof(*s) * (len + 1));
 	if (!str)
 		return (NULL);
@@ -29,8 +33,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		if (i >= start && j < len)
 		{
-			str[j] = s[i];
-			j++;
+			str[j++] = s[i];
 		}
 		i++;
 	}
